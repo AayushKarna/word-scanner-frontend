@@ -456,10 +456,10 @@ tbody tr:last-child {
 }
 
 .tr-true {
-  background-color: #b2f2bb;
+  background-color: #d8f5a2;
   transition: background-color 0.1s;
 }
 
 .tr-true:hover {
-  background-color: #8ce99a;
+  background-color: #c0eb75;
 }
