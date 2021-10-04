@@ -370,6 +370,7 @@ textarea {
 
   overflow: auto;
   resize: vertical;
+  max-height: 35rem;
 
   transition: color 0.25s ease-in-out, outline 0.25s ease-in-out,
     border 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
