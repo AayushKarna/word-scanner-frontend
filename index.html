@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 
     <script
       type="module"
@@ -20,7 +20,16 @@
       defer
       src="https://cdn.jsdelivr.net/npm/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"
     ></script>
-    <script defer src="script.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/gh/cosmogicofficial/quantumalert@latest/minfile/quantumalert.js"
+      charset="utf-8"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+    ></script>
+    <script defer src="js/script.js"></script>
 
     <title>Word Scanner from Web pages</title>
   </head>
@@ -59,10 +68,10 @@
             <textarea
               class="text-area"
               name="sites"
-              id="site"
+              id="site-input"
               wrap="hard"
               maxlength="500"
-              placeholder="theverge.com&#10;techcrunch.com"
+              placeholder="theverge.com&#10;techcrunch.com &#10; &#10;(Seperate each site with a new line)"
             ></textarea>
           </div>
           <div class="input-site">
@@ -70,10 +79,10 @@
             <textarea
               class="text-area"
               name="sites"
-              id="site"
+              id="keyword-input"
               wrap="hard"
-              maxlength="500"
-              placeholder="free trial&#10;no credit card required"
+              maxlength="1000"
+              placeholder="free trial&#10;no credit card required &#10; &#10;(Seperate each keyword with a new line)"
             ></textarea>
           </div>
           <div class="btn-container">
@@ -88,139 +97,58 @@
     <section class="section-result" id="result">
       <div class="container">
         <h2 class="heading-secondary">Result:</h2>
-        <table>
+        <table id="main-table">
           <thead>
             <tr>
-              <th>Site Name</th>
-              <th>Availability</th>
               <th>Site Link</th>
+              <th>Availability</th>
               <th>Visit Page</th>
             </tr>
           </thead>
-          <tbody>
-            <tr class="tr-true">
-              <th>Gadget Byte Nepal</th>
-              <td>True</td>
-              <td>
-                <a
-                  href="https://gadgetbytenepal.com"
-                  target="_blank"
-                  class="site-link"
-                  >gadgetbytenepal.com</a
-                >
-              </td>
-              <td>
-                <a
-                  href="https://gadgetbytenepal.com"
-                  class="icon-link"
-                  target="_blank"
-                  ><ion-icon name="open-outline" class="link-icon"></ion-icon
-                ></a>
-              </td>
+          <tbody id="site-info">
+            <tr>
+              <td colspan="3" class="text-center">Data Not Available</td>
             </tr>
-            <tr class="tr-true">
-              <th>Tech Sathi</th>
-              <td>True</td>
-              <td>
-                <a
-                  href="https://techsathi.com"
-                  target="_blank"
-                  class="site-link"
-                  >techsathi.com</a
-                >
-              </td>
-              <td>
-                <a
-                  href="https://techsathi.com"
-                  class="icon-link"
-                  target="_blank"
-                  ><ion-icon name="open-outline" class="link-icon"></ion-icon
-                ></a>
-              </td>
+          </tbody>
+        </table>
+
+        <table id="main-table-hidden">
+          <thead>
+            <tr>
+              <th>Site Link</th>
+              <th>Availability</th>
             </tr>
-            <tr class="tr-false">
-              <th>Info tech Nepal</th>
-              <td>False</td>
-              <td>
-                <a
-                  href="https://infotechsnepal.com"
-                  target="_blank"
-                  class="site-link"
-                  >infotechsnepal.com</a
-                >
-              </td>
-              <td>
-                <a
-                  href="https://infotechsnepal.com"
-                  class="icon-link"
-                  target="_blank"
-                  ><ion-icon name="open-outline" class="link-icon"></ion-icon
-                ></a>
-              </td>
-            </tr>
-            <tr class="tr-true">
-              <th>Tech Lekh</th>
-              <td>True</td>
-              <td>
-                <a href="https://techlekh.com" target="_blank" class="site-link"
-                  >techlekh.com</a
-                >
-              </td>
-              <td>
-                <a href="https://techlekh.com" class="icon-link" target="_blank"
-                  ><ion-icon name="open-outline" class="link-icon"></ion-icon
-                ></a>
-              </td>
-            </tr>
-            <tr class="tr-false">
-              <th>Tech Sanchar</th>
-              <td>False</td>
-              <td>
-                <a
-                  href="https://techsanchar.com"
-                  target="_blank"
-                  class="site-link"
-                  >techsanchar.com</a
-                >
-              </td>
-              <td>
-                <a
-                  href="https://techsanchar.com"
-                  class="icon-link"
-                  target="_blank"
-                  ><ion-icon name="open-outline" class="link-icon"></ion-icon
-                ></a>
-              </td>
-            </tr>
-            <tr class="tr-false">
-              <th>Ronish Dhakal</th>
-              <td>False</td>
-              <td>
-                <a
-                  href="https://ronishdhakal.com"
-                  target="_blank"
-                  class="site-link"
-                  >ronishdhakal.com</a
-                >
-              </td>
-              <td>
-                <a
-                  href="https://ronishdhakal.com"
-                  class="icon-link"
-                  target="_blank"
-                  ><ion-icon name="open-outline" class="link-icon"></ion-icon
-                ></a>
-              </td>
+          </thead>
+          <tbody id="site-info-hidden">
+            <tr>
+              <td colspan="3" class="text-center">Data Not Available</td>
             </tr>
           </tbody>
         </table>
 
         <div class="center-el">
-          <button class="btn" id="scan-btn" data-href="#result">
-            Download CSV
-          </button>
+          <button class="btn" id="csv-btn">Download CSV</button>
         </div>
       </div>
     </section>
+
+    <footer class="section-footer">
+      <div class="container">
+        <p class="footer-text margin-bottom-md">
+          Copyright &copy; <span id="current-year">2021</span>. All rights
+          reserved.
+        </p>
+        <p class="footer-text">
+          Made By:
+          <a href="https://github.com/AayushKarna" target="_blank"
+            >Aayush Karn</a
+          >
+          and
+          <a href="https://github.com/nishantsapkota" target="_blank"
+            >Nishant Sapkota</a
+          >
+        </p>
+      </div>
+    </footer>
   </body>
 </html>
