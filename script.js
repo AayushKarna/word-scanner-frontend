@@ -38,6 +38,6 @@ scanBtn.addEventListener('click', e => {
   smoothScroll(href);
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
   hideLoader();
 });

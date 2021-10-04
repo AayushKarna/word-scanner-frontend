@@ -49,6 +49,12 @@ body {
   margin-bottom: 3.2rem;
 }
 
+.center-el {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .btn {
   display: inline-block;
   width: auto;
@@ -62,7 +68,7 @@ body {
   font-size: 2rem;
   color: #fff;
   font-weight: 700;
-  border-radius: 9px;
+  border-radius: 5px;
   transition: background-color 0.2s;
 }
 
@@ -413,6 +419,7 @@ table {
   /* border: 1px solid #343a40; */
   border-collapse: collapse;
   font-size: 18px;
+  margin-bottom: 2.4rem;
 }
 
 th,
@@ -432,7 +439,7 @@ thead th {
 }
 
 tbody tr {
-  border-bottom: 2px solid #fff;
+  border-bottom: 1px solid #fff;
 }
 
 tbody tr:last-child {
